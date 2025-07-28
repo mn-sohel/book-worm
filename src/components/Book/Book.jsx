@@ -14,7 +14,7 @@ const Book = ({ book }) => {
       <div className="card-body">
         <h2 className="card-title">
           {bookName}
-          <div className="badge badge-secondary">NEW</div>
+          {/* <div className="badge badge-secondary">NEW</div> */}
         </h2>
         <p>By: {author}</p>
         <div className="card-actions justify-end">
