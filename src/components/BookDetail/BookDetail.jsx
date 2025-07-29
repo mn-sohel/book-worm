@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { addToStoredReadList } from '../../utilities/addToDb';
 
 const BookDetail = () => {
     const {bookId} = useParams();
@@ -10,6 +11,10 @@ const BookDetail = () => {
     const book = data.find(book => book.bookId === id)
     
     const {bookId: currentBookId, image} = book;
+
+    const handleMarkAsRead = (id) => {
+        addToStoredReadList(id)
+    }
     
     
     return (
@@ -17,8 +22,8 @@ const BookDetail = () => {
             <h2>Book details: {bookId}</h2>
             <img className='w-36' src={image} alt="" />
             <br />
-            <button className="btn btn-outline mr-4 btn-accent">Mark as Read</button>
-            <button className="btn btn-accent">Wishlist</button>
+            <button onClick={ () => handleMarkAsRead(bookId)} className="btn btn-outline mr-4 btn-accent">Mark as Read</button>
+            <button className="btn btn-accent">Add to Wishlist</button>
         </div>
     );
 };
